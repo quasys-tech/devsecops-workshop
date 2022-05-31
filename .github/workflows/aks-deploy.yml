@@ -11,9 +11,9 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: quay.io
-  USER_NAME: swoturkey
+  USER_NAME: quasys
   # github.repository as <account>/<repo>
-  IMAGE_NAME: swoturkey/ratings-api
+  IMAGE_NAME: quasys/ratings-api
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
@@ -65,10 +65,10 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.projectKey=SoftwareONE-Turkey_mslearn-aks-workshop-ratings-api
-            -Dsonar.organization=softwareone-turkey
+            -Dsonar.projectKey=quasys-tech_devsecops-workshop
+            -Dsonar.organization=quasys-tech
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - uses: act10ns/slack@v1
         with: 
