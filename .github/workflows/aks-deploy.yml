@@ -138,7 +138,7 @@ jobs:
           curl --progress-bar -L -k --header "authorization: Bearer ${{ secrets.TWISTLOCK_TOKEN }}" ${{ secrets.TWISTLOCK_CLI_URL }} > twistcli;
           chmod a+x twistcli;
           ls;
-          ./twistcli images scan -u ${{ secrets.TWISTLOCK_USERNAME }} -p ${{ secrets.TWISTLOCK_PASSWORD }} --address ${{ secrets.TWISTLOCK_URL }} ${{ steps.meta.outputs.tags }} --details --publish
+          twistcli images scan -u ${{ secrets.TWISTLOCK_USERNAME }} -p ${{ secrets.TWISTLOCK_PASSWORD }} --address ${{ secrets.TWISTLOCK_URL }} ${{ steps.meta.outputs.tags }} --details --publish
       - name: Docker Push
         run: docker push ${{ steps.meta.outputs.tags }}
       - uses: act10ns/slack@v1
