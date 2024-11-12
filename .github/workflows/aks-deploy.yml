@@ -33,6 +33,13 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - name: Run Prisma Cloud 
+      id: prisma-cloud
+      uses: bridgecrewio/checkov-action@master
+      env:
+        PRISMA_API_URL: https://api.prismacloud.io
+      with:
+        api-key: ${{ secrets.BC_API_KEY }}
   checkov:
     runs-on: ubuntu-latest
     needs: build
